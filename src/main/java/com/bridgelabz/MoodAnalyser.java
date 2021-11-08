@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 /**
- * Purpose  - Given Null Mood Should Return Happy
+ * Purpose  - Given null Mood Should Throw MoodAnalysisException
  * @author  - Yogendra Lalit Sharma
  * @version - 16.0
  * @since   - 2021-11-08
@@ -10,8 +10,11 @@ package com.bridgelabz;
 public class MoodAnalyser {
     public static String message;
 
+    public MoodAnalyser() {
+    }
+
     // Constructor
-    public MoodAnalyser(String message) {
+    public MoodAnalyser(String message) throws MoodAnalysisException {
         this.message = message;
         analyseMood();
     }
@@ -26,7 +29,7 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public static String analyseMood() {
+    public static String analyseMood() throws MoodAnalysisException {
         try {
             if (message.toLowerCase().contains("sad")) {
                 return "Sad";
@@ -34,7 +37,7 @@ public class MoodAnalyser {
                 return "Happy";
             }
         } catch (NullPointerException e) {
-            return "Happy";
+            throw new MoodAnalysisException("Entered Invalid mood");
         }
     }
 }

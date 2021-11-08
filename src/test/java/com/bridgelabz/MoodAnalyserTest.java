@@ -2,29 +2,32 @@ package com.bridgelabz;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 public class MoodAnalyserTest {
-
     @Test
-    public void givenMessage_WhenProper_ShouldReturnSad() {
-        MoodAnalyser moodanalyser = new MoodAnalyser("I am in Sad Mood");
+    public void givenMessage_WhenProper_ShouldReturnSad() throws MoodAnalysisException {
+        MoodAnalyser moodanalyser = new MoodAnalyser();
+        moodanalyser.setMessage("I am in Sad Mood");
         String actualResult = moodanalyser.analyseMood();
         Assert.assertEquals("Sad", actualResult);
     }
 
     @Test
-    public void givenMessage_WhenProper_ShouldReturnHappy() {
-        MoodAnalyser moodanalyser = new MoodAnalyser("I am in happy Mood");
+    public void givenMessage_WhenProper_ShouldReturnHappy() throws MoodAnalysisException {
+        MoodAnalyser moodanalyser = new MoodAnalyser();
+        moodanalyser.setMessage("I am in happy Mood");
         String actualResult = moodanalyser.analyseMood();
         Assert.assertEquals("Happy", actualResult);
     }
 
     @Test
-    public void givenMessage_Null_ShouldReturnHappy() {
-        MoodAnalyser moodanalyser = new MoodAnalyser(null);
-        String actualResult = moodanalyser.analyseMood();
-        Assert.assertEquals("Happy", actualResult);
+    public void givenMessage_Null_ShouldReturnMessage() throws MoodAnalysisException {
+        MoodAnalyser moodanalyser = new MoodAnalyser();
+        moodanalyser.setMessage(null);
+        try {
+            String actualResult = moodanalyser.analyseMood();
+            Assert.assertEquals("Entered Invalid Mood ", actualResult);
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
     }
 }
