@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 /**
- * Purpose  - Handle Exception if User Provides Invalid Mood
+ * Purpose  - Given Null Mood Should Return Happy
  * @author  - Yogendra Lalit Sharma
  * @version - 16.0
  * @since   - 2021-11-08
@@ -34,7 +34,7 @@ public class MoodAnalyser {
                 return "Happy";
             }
         } catch (NullPointerException e) {
-            return "Exception Handled";
+            return "Happy";
         }
     }
 }
